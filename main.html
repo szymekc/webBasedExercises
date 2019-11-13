@@ -5,13 +5,14 @@
 		<meta name="description" content="We run a gym situated in Wroclaw. Nice to meet you."> 
 		<meta name="og:title" property="og:title" content="Awesome gym in Wroclaw"> 
 		<link rel="stylesheet" type="text/css" href="css.css">
+		<script src="jscolor.js"></script>
 	</head>
-	<body>
+	<body id='mainbody'>
 		<header style="text-align:center; color:red;">
 			<div style="position: relative; text-align:center">
 				<a href="main.html">
 					<img src="gym.jpg" style="width:100%; height:150px" alt="Main page"></a>
-					<div class="banner" style="font-family:impact; font-size:72px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Welcome to the gym</div>
+					<div id='banner' class="banner" style="font-family:impact; font-size:72px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">Welcome to the gym</div>
 				</div>
 			</header>
 		<table style="padding-left:50px; font-size:12px;">
@@ -30,7 +31,9 @@
 					</td>
 				<td style="padding-left:50px; font-family:verdana; font-size:12px; text-align:justify">
 					<script>
-            function isGymOpen() {
+            var color1 = "FF69B4";
+			var color2 = "00FFFF";
+			function isGymOpen() {
                 let a;
                 let d = new Date();
                 a = d.getHours();
@@ -53,6 +56,28 @@
                     else text = "you better get your fat ass to our gym for some exercises"; }
                 document.getElementById("BMI").innerHTML = text;
             }
+			function updatebg1(jscolor) {
+				color1 = jscolor;
+				document.getElementById('mainbody').style.backgroundImage = 'linear-gradient(#' + color1 + ', #' + color2 + ')';
+			}
+			function updatebg2(jscolor) {
+				color2 = jscolor;
+				document.getElementById('mainbody').style.backgroundImage = 'linear-gradient(#' + color1 + ', #' + color2 + ')';
+			}
+			function factorialCalc(number) {
+				let i, res = 1;
+				if (number < 0) {
+                    return "undefined";
+                }
+				if (number == 0){ return 1;}
+				for (i = 1; i <= number; i++){
+					res *= i;
+				}
+				return res;
+			}
+			function changeHeader(text) {
+				document.getElementById('banner').innerHTML = "Your factorial is " + text;
+			}
         </script>
         <p id="demo"></p>
         <button type="button"
@@ -64,10 +89,21 @@
         <p>remember now weight:</p>
         <input id="weight">
         <button type="button" onclick="BMI()">Submit</button>
-
         <p id="BMI"></p>
 				</td>
+				<td>
+					<div style="float:right; padding-left:400px">
+						<p>Choose background gradient color 1: <input class="jscolor {onFineChange:'updatebg1(this)'}" value="FF69B4"></p>
+						<p>Choose background gradient color 2: <input class="jscolor {onFineChange:'updatebg2(this)'}" value="00FFFF"></p>
+					</div>
+					<form style="float:left" name="fact" action="#" onsubmit="changeHeader(factorialCalc(document.getElementById('number').value))">
+					<p>Calculate a factorial lol</p>
+						<input id="number" type="number" value=0>
+						<input type="submit" value="Calculate">
+					</form>
+				</td>
 			</tr>
+
 		</table>
 	</body>
 </html>
