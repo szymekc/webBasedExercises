@@ -31,8 +31,8 @@
 					</td>
 				<td style="padding-left:50px; font-family:verdana; font-size:12px; text-align:justify">
 					<script>
-            var color1 = "FF69B4";
-			var color2 = "00FFFF";
+            let color1 = "FF69B4";
+			let color2 = "00FFFF";
 			function isGymOpen() {
                 let a;
                 let d = new Date();
@@ -66,12 +66,14 @@
 			}
 			function factorialCalc(number) {
 				let i, res = 1;
+				let naturalNumbers = [...Array(parseInt(number))].map((x, index) => index+1);
 				if (number < 0) {
                     return "undefined";
                 }
+				console.log(naturalNumbers, number);
 				if (number == 0){ return 1;}
-				for (i = 1; i <= number; i++){
-					res *= i;
+				for (i = 0; i < number; i++){
+					res *= naturalNumbers[i];
 				}
 				return res;
 			}
