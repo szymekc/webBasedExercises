@@ -1,0 +1,21 @@
+.gallery-table {
+  padding-left: 50px;
+  font-size: 12px;
+}
+
+.gallery-table-header {
+  padding-left: 50px;
+  font-family: verdana;
+  font-size: 12px;
+  text-align: justify;
+}
+
+.check-out {
+  float: right;
+}
+
+.menu {
+  position: absolute;
+  top: 180px;
+  left: 20px;
+}
