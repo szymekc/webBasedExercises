@@ -5,26 +5,24 @@ import GymStatus from "./GymStatus";
 const Dashboard = () => {
   return (
     <div>
-      <table style={{ "padding-left": "50px", "font-size": "12px" }}>
-        <tr>
-          <MenuDropdown />
-          <td
-            style={{
-              "padding-left": "50px",
-              "font-family": "verdana",
-              "font-size": "12px",
-              "text-align": "justify"
-            }}
-          >
-            <GymStatus />
-            <BmiCalculator />
-          </td>
-          <td>
-            <BackgroundInput />
-            <FactorialForm />
-          </td>
-        </tr>
-      </table>
+      <div>
+        <MenuDropdown />
+        <div
+          style={{
+            paddingLeft: "50px",
+            fontFamily: "verdana",
+            fontSize: "12px",
+            textAlign: "justify"
+          }}
+        >
+          <GymStatus />
+          <BmiCalculator />
+        </div>
+        <div>
+          <BackgroundInput />
+          <FactorialForm />
+        </div>
+      </div>
     </div>
   );
 };
@@ -41,7 +39,7 @@ const FactorialForm = () => {
       style={{ float: "left" }}
       name="fact"
       action="#"
-      onsubmit={() => changeHeader(factorialCalc())}
+      onSubmit={() => changeHeader(factorialCalc())}
     >
       <p>Calculate a factorial lol</p>
       <input id="number" type="number" value={0} />
@@ -52,10 +50,17 @@ const FactorialForm = () => {
 
 const MenuDropdown = () => {
   return (
-    <td style={{ position: "absolute", top: "180px", left: "20px" }}>
-      <div class="dropdown">
-        <button class="dropbtn">Menu</button>
-        <div class="dropdown-content">
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        top: "180px",
+        left: "20px"
+      }}
+    >
+      <div style={{ marginRight: "auto" }} className="dropdown">
+        <button className="dropbtn">Menu</button>
+        <div className="dropdown-content">
           <a href="gallery.html">Gallery</a>
           <br />
           <a href="register.html">Register</a>
@@ -68,19 +73,25 @@ const MenuDropdown = () => {
           <br />
         </div>
       </div>
-    </td>
+    </div>
   );
 };
 
 const BackgroundInput = () => (
-  <div style={{ float: "right", "padding-left": "400px" }}>
+  <div style={{ float: "right", paddingLeft: "400px" }}>
     <p>
       Choose background gradient color 1:{" "}
-      <input class="jscolor {onFineChange:'updatebg1(this)'}" value="FF69B4" />
+      <input
+        className="jscolor {onFineChange:'updatebg1(this)'}"
+        value="FF69B4"
+      />
     </p>
     <p>
       Choose background gradient color 2:{" "}
-      <input class="jscolor {onFineChange:'updatebg2(this)'}" value="00FFFF" />
+      <input
+        className="jscolor {onFineChange:'updatebg2(this)'}"
+        value="00FFFF"
+      />
     </p>
   </div>
 );

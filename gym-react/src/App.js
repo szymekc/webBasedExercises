@@ -9,8 +9,8 @@ import gym from "./assets/gym.jpg";
 const App = () => (
   <div className="App">
     <Router>
-      <header style={{ "text-align": "center", color: "red" }}>
-        <div style={{ position: "relative", "text-align": "center" }}>
+      <header style={{ textAlign: "center", color: "red" }}>
+        <div style={{ position: "relative", textAlign: "center" }}>
           <a href="/gallery">
             <img
               src={gym}
@@ -19,10 +19,10 @@ const App = () => (
             />
           </a>
           <div
-            class="banner"
+            className="banner"
             style={{
-              "font-family": "impact",
-              "font-size": "72px",
+              fontFamily: "impact",
+              fontSize: "72px",
               position: "absolute",
               top: "50%",
               left: "50%",
@@ -57,8 +57,5 @@ const App = () => (
     </Router>
   </div>
 );
-// function App() {
-//   return <div className="App">Gym app</div>;
-// }
 
 export default App;

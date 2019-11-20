@@ -127,9 +127,9 @@ const TableColumn = ({ children, onClick, styles }) => (
       ...{
         width: "100px",
         padding: "15px",
-        "font-family": "verdana",
-        "font-size": "12px",
-        "text-align": "justify"
+        fontFamily: "verdana",
+        fontSize: "12px",
+        textAlign: "justify"
       },
       ...styles
     }}
