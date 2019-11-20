@@ -11,13 +11,17 @@ const BmiCalculator = () => {
     setBMIs([
       ...bmis,
       {
-        weight,
-        height,
+        weight: parseInt(weight),
+        height: parseInt(height),
         bmi: bmi.toFixed(1),
-        date: moment().format("YYYY-MM-DD hh:mm:ss"),
+        date: moment(),
         info: getBmiInfo({ bmi })
       }
     ]);
+  };
+
+  const removeBmi = date => {
+    setBMIs([...bmis.filter(bmi => bmi.date !== date)]);
   };
 
   const getBmiInfo = ({ bmi }) => {
@@ -51,40 +55,83 @@ const BmiCalculator = () => {
         Submit
       </button>
       <p id="BMI"></p>
-      <TableBmi bmis={bmis} />
+      <TableBmi bmis={bmis} onRemove={date => removeBmi(date)} />
     </div>
   );
 };
 
-const TableBmi = ({ bmis }) => (
-  <table>
-    <tr>
-      <TableColumn>weight</TableColumn>
-      <TableColumn>height</TableColumn>
-      <TableColumn>bmi</TableColumn>
-      <TableColumn>date</TableColumn>
-      <TableColumn>info</TableColumn>
-    </tr>
-    {bmis.map(({ weight, height, bmi, date, info }) => (
-      <tr key={date}>
-        <TableColumn>{weight}</TableColumn>
-        <TableColumn>{height}</TableColumn>
-        <TableColumn>{bmi}</TableColumn>
-        <TableColumn>{date}</TableColumn>
-        <TableColumn>{info}</TableColumn>
-      </tr>
-    ))}
-  </table>
-);
+const TableBmi = ({ bmis, onRemove }) => {
+  const [orderBy, setOrderBy] = useState(undefined);
+  const [orderDirection, setOrderDirection] = useState(1);
 
-const TableColumn = ({ children }) => (
+  const changeOrder = newOrder => {
+    if (orderBy === newOrder) {
+      setOrderDirection(orderDirection * -1);
+    } else setOrderBy(newOrder);
+  };
+
+  return (
+    <table>
+      <tr>
+        <TableColumn
+          styles={{ cursor: "pointer" }}
+          onClick={() => changeOrder("weight")}
+        >
+          weight
+        </TableColumn>
+        <TableColumn
+          styles={{ cursor: "pointer" }}
+          onClick={() => changeOrder("height")}
+        >
+          height
+        </TableColumn>
+        <TableColumn
+          styles={{ cursor: "pointer" }}
+          onClick={() => changeOrder("bmi")}
+        >
+          bmi
+        </TableColumn>
+        <TableColumn
+          styles={{ cursor: "pointer" }}
+          onClick={() => changeOrder("date")}
+        >
+          date
+        </TableColumn>
+        <TableColumn>info</TableColumn>
+      </tr>
+      {bmis
+        .sort((a, b) => orderDirection * (b[orderBy] - a[orderBy]))
+        .map(({ weight, height, bmi, date, info }) => (
+          <tr key={date}>
+            <TableColumn>{weight}</TableColumn>
+            <TableColumn>{height}</TableColumn>
+            <TableColumn>{bmi}</TableColumn>
+            <TableColumn>{date.format("YYYY-MM-DD hh:mm:ss")}</TableColumn>
+            <TableColumn>{info}</TableColumn>
+            <TableColumn
+              styles={{ cursor: "pointer" }}
+              onClick={() => onRemove(date)}
+            >
+              remove
+            </TableColumn>
+          </tr>
+        ))}
+    </table>
+  );
+};
+
+const TableColumn = ({ children, onClick, styles }) => (
   <td
+    onClick={onClick}
     style={{
-      width: "100px",
-      padding: "15px",
-      "font-family": "verdana",
-      "font-size": "12px",
-      "text-align": "justify"
+      ...{
+        width: "100px",
+        padding: "15px",
+        "font-family": "verdana",
+        "font-size": "12px",
+        "text-align": "justify"
+      },
+      ...styles
     }}
   >
     {children}
