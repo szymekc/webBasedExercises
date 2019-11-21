@@ -1,0 +1,104 @@
+html{
+	height: 100%;
+}
+p {
+    font-family: "Comic Sans MS";
+    font-size: 16px;
+    color : blanchedalmond;
+	text-shadow: 1px 1px #000000;
+}
+
+body {
+    background-image: linear-gradient(hotpink, cyan);
+	height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+	
+}
+@media only screen and (max-height: 700px) {
+  body {
+    background-color: lightblue;
+  }
+}
+.pricetable, .pricerow, .pricecol {
+  border: 1px solid black;
+}
+
+.pricehead {
+  text-align: center;
+}
+.pricerow:hover {color: white;}
+.pricecol:nth-child(even) {background-color: #FF8C00;}
+.pricecol:nth-child(odd) {background-color: hsla(120, 100%, 75%, 0.3);}
+.pricecol:hover {background-color: SaddleBrown;}
+.pricehead {
+  background-color: rgba(60, 120, 80, 0.3);
+  color: white;
+}
+.galimg{
+	width:320px; 
+	height:212px;
+	border-radius:25px;
+	float: left;
+	clear: both;
+}
+.galimg:hover {
+	opacity: 0.5;
+	width: 400px;
+	height: 250px;
+	transform: rotate(36000deg);
+    transition: width 2s, height 2s, transform 30s, opacity 4s;
+}
+.banner {
+	text-shadow: 10px 10px #000000;
+}
+#borderimg {
+  border: 10px solid transparent;
+  padding: 15px;
+  border-image: url(border.png) 30 round;
+  /*border-image-outset: 10px;*/
+}
+.menu{
+	float: left;
+	clear: both;
+}
+.dropbtn {
+  background-color: crimson;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+td > .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: hotpink;
+}
