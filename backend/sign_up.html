@@ -7,10 +7,10 @@
 
     <ul class=flashes>
 {% for message in messages %}
-{#{% if "Error" not in message: %}#}
+
 <div class="alert alert-info">
-                <strong>Success! </strong> {{ message }}</div>
-{#{% endif %}#}
+                <strong>Failure! </strong> {{ message }}</div>
+
 
 {% if "Error" in message[1]: %}
 <div class="alert alert-warning">
@@ -42,57 +42,3 @@
         <p>{{ form.submit() }}</p>
     </form>
 {% endblock %}
-{#<html>#}
-{#<head></head>#}
-{#{% block title %}Sign up{% endblock %}#}
-{##}
-{#{% block main %}#}
-{##}
-{#{{ form.username(size=30, maxlength=50) }}#}
-
-------------------
-{#    <div class="container">#}
-{#        <div class="row">#}
-{#            <div class="col">#}
-{##}
-{#                <h1>Sign up</h1>#}
-{#                <hr>#}
-{##}
-{#                <form action="/registered" method="post">#}
-{##}
-{#                    <div class="form-group">#}
-{#                        <label>Username</l
-
-
-abel>#}
-{#                        <input type="text" class="form-control" id="Username" name="Username"#}
-{#                               placeholder="Select a username">#}
-{#                    </div>#}
-{##}
-{#                    <div class="form-group">#}
-{#                        <label>Email</label>#}
-{#                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">#}
-{#                    </div>#}
-{##}
-{#                    <div class="form-group">#}
-{#                        <label>Password</label>#}
-{#                        <input type="password" class="form-control" id="password" name="password"#}
-{#                               placeholder="Create a password">#}
-{#                    </div>#}
-{#                    <div class="form-group">#}
-{#                        <label>Age</label>#}
-{#                        <input type="number" class="form-control" id="number" name="age"#}
-{#                               placeholder="Type your age">#}
-{#                    </div>#}
-{##}
-{##}
-{#                    <button type="submit" class="btn btn-primary">Sign up</button>#}
-{##}
-{#                </form>#}
-{##}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-
-{#{% endblock %}#}
-{#</html>#}
