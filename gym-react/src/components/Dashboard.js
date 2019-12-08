@@ -1,6 +1,13 @@
-import React from "react";
+import React, { Fragment, useState } from 'react';
 import BmiCalculator from "./BmiCalculator";
 import GymStatus from "./GymStatus";
+import DateFnsUtils from '@date-io/moment'; // choose your lib
+import {
+  DatePicker,
+  TimePicker,
+  DateTimePicker,
+  MuiPickersUtilsProvider,
+} from '@material-ui/pickers';
 
 const Dashboard = () => {
   return (
@@ -21,6 +28,9 @@ const Dashboard = () => {
         <div>
           <BackgroundInput />
           <FactorialForm />
+        </div>
+        <div>
+          <BasicDatePicker />
         </div>
       </div>
     </div>
@@ -61,7 +71,7 @@ const MenuDropdown = () => {
       <div style={{ marginRight: "auto" }} className="dropdown">
         <button className="dropbtn">Menu</button>
         <div className="dropdown-content">
-          <a href="gallery.html">Gallery</a>
+          <a href="gallery">Gallery</a>
           <br />
           <a href="register.html">Register</a>
           <br />
@@ -95,5 +105,22 @@ const BackgroundInput = () => (
     </p>
   </div>
 );
+
+function BasicDatePicker(props) {
+  const [selectedDate, handleDateChange] = useState(new Date());
+
+  return (
+    <Fragment>
+      <DatePicker
+        autoOk
+        label="Clearable"
+        clearable
+        value={selectedDate}
+        onChange={handleDateChange}
+      />
+    </Fragment>
+  );
+}
+
 
 export default Dashboard;
