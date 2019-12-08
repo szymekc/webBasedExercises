@@ -1,8 +1,8 @@
-import React from "react";
-import a from "../assets/a.jpg";
-import b from "../assets/b.jpg";
-import c from "../assets/c.jpg";
-import "./css.css";
+import React from 'react';
+import a from '../assets/a.jpg';
+import b from '../assets/b.jpg';
+import c from '../assets/c.jpg';
+import './css.css';
 
 const Gallery = () => {
   return (
@@ -11,7 +11,7 @@ const Gallery = () => {
         <tr>
           <Menu />
           <td className="gallery-table-header">
-            <table style={{ position: "absolute", left: "15%" }}>
+            <table style={{ position: 'absolute', left: '15%' }}>
               <tr>
                 <td>
                   <img className="galimg" src={a} alt="a" />
