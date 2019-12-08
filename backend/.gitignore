@@ -1,0 +1,5 @@
+venv/*
+data.sqlite
+__pycache__/*
+.idea/*
+data/*
