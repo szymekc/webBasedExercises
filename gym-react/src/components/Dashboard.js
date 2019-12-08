@@ -1,6 +1,7 @@
-import React from "react";
-import BmiCalculator from "./BmiCalculator";
-import GymStatus from "./GymStatus";
+import React, { useState } from 'react';
+import BmiCalculator from './BmiCalculator';
+import GymStatus from './GymStatus';
+import axios from 'axios';
 
 const Dashboard = () => {
   return (
@@ -9,10 +10,10 @@ const Dashboard = () => {
         <MenuDropdown />
         <div
           style={{
-            paddingLeft: "50px",
-            fontFamily: "verdana",
-            fontSize: "12px",
-            textAlign: "justify"
+            paddingLeft: '50px',
+            fontFamily: 'verdana',
+            fontSize: '12px',
+            textAlign: 'justify'
           }}
         >
           <GymStatus />
@@ -28,23 +29,37 @@ const Dashboard = () => {
 };
 
 const FactorialForm = () => {
+  const [factorialResult, setFactorialResult] = useState(undefined);
+  const [formValue, setFormValue] = useState(0);
+
   const changeHeader = () => {
     return undefined;
   };
-  const factorialCalc = () => {
-    return undefined;
+  const factorialCalc = async () => {
+    const { data } = await axios.get(
+      `http://localhost:5000/factorial/${formValue}`
+    );
+    setFactorialResult(data.factorial);
   };
   return (
-    <form
-      style={{ float: "left" }}
-      name="fact"
-      action="#"
-      onSubmit={() => changeHeader(factorialCalc())}
-    >
-      <p>Calculate a factorial lol</p>
-      <input id="number" type="number" value={0} />
-      <input type="submit" value="Calculate" />
-    </form>
+    <>
+      Factorial result:{factorialResult}
+      <form
+        style={{ float: 'left' }}
+        name="fact"
+        action="#"
+        onSubmit={factorialCalc}
+      >
+        <p>Calculate a factorial lol</p>
+        <input
+          id="number"
+          type="number"
+          value={formValue}
+          onChange={e => setFormValue(e.target.value)}
+        />
+        <input type="submit" value="Calculate" />
+      </form>
+    </>
   );
 };
 
@@ -52,13 +67,13 @@ const MenuDropdown = () => {
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
-        top: "180px",
-        left: "20px"
+        display: 'flex',
+        flexDirection: 'column',
+        top: '180px',
+        left: '20px'
       }}
     >
-      <div style={{ marginRight: "auto" }} className="dropdown">
+      <div style={{ marginRight: 'auto' }} className="dropdown">
         <button className="dropbtn">Menu</button>
         <div className="dropdown-content">
           <a href="gallery.html">Gallery</a>
@@ -78,16 +93,16 @@ const MenuDropdown = () => {
 };
 
 const BackgroundInput = () => (
-  <div style={{ float: "right", paddingLeft: "400px" }}>
+  <div style={{ float: 'right', paddingLeft: '400px' }}>
     <p>
-      Choose background gradient color 1:{" "}
+      Choose background gradient color 1:{' '}
       <input
         className="jscolor {onFineChange:'updatebg1(this)'}"
         value="FF69B4"
       />
     </p>
     <p>
-      Choose background gradient color 2:{" "}
+      Choose background gradient color 2:{' '}
       <input
         className="jscolor {onFineChange:'updatebg2(this)'}"
         value="00FFFF"
