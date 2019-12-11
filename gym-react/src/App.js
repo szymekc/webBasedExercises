@@ -11,7 +11,7 @@ const App = () => (
     <Router>
       <header style={{ textAlign: 'center', color: 'red' }}>
         <div style={{ position: 'relative', textAlign: 'center' }}>
-          <a href="/gallery">
+          <a href="/#">
             <img
               src={gym}
               style={{ width: '100%', height: '150px' }}

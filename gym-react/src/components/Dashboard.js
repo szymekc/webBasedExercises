@@ -1,8 +1,10 @@
 import React, { Fragment, useState } from 'react';
+import ReactDOM from 'react-dom'
 import BmiCalculator from "./BmiCalculator";
 import GymStatus from "./GymStatus";
 import axios from 'axios';
 import DateFnsUtils from '@date-io/moment'; // choose your lib
+import Button from '@material-ui/core/Button';
 import {
   DatePicker,
   TimePicker,
@@ -26,12 +28,13 @@ const Dashboard = () => {
           <GymStatus />
           <BmiCalculator />
         </div>
-        <div>
+        <div id='render'>
           <BackgroundInput />
           <FactorialForm />
         </div>
         <div>
           <BasicDatePicker />
+          <ElementButtons />
         </div>
       </div>
     </div>
@@ -126,16 +129,48 @@ function BasicDatePicker(props) {
 
   return (
     <Fragment>
-      <DatePicker
-        autoOk
-        label="Clearable"
-        clearable
-        value={selectedDate}
-        onChange={handleDateChange}
-      />
+      <form
+        action="#"
+        onSubmit={() => console.log(selectedDate)}>
+        <DatePicker
+          autoOk
+          label="Clearable"
+          clearable
+          value={selectedDate}
+          onChange={handleDateChange}
+        />
+        <input type="submit" value="Submit date" />
+      </form>
     </Fragment>
   );
 }
 
+const ElementButtons = () => {
+  const [element, setElement] = useState(0);
+  return (
+    <>
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={() => setElement(element + 1)}>Add element</Button>
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={() => element !== 0 && setElement(element - 1)}>Remove element</Button>
+      {
+        [...Array(element)].map(() => <PElement />)
+      }
+    </>
+  )
+}
+
+
+const PElement = () => {
+  return (
+    <Fragment>
+      <p>p element</p>
+    </Fragment>
+  )
+}
 
 export default Dashboard;
