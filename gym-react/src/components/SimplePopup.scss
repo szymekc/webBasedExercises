@@ -1,0 +1,12 @@
+.SimplePopup {
+  background-color: aqua;
+  div {
+    padding: 5px 15px 15px 15px;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    h2 {
+      text-align: center;
+    }
+  }
+}
